@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring Security Example</title>
+<script type="text/javascript">
+function getCaptchaCode() {
+	alert("");
+    var url = '/th-spring-integration/spring/guests';
+     
+    $("#resultsBlock").load(url);
+}
+</script>
+</head>
+<body>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> User Name : <input type="text" name="userName" />
+			</label>
+		</div>
+		<div>
+			<label> Password: <input type="password" name="password" />
+			</label>
+		</div>
+		<div>
+			<spring:url value="/captcha" var="captchaUrl" />
+			<spring:url value="/register" var="registerURL" />
+			
+			<label th:text="${captcha} " > </label>
+			
+			<a th:href="@{/captcha}">Captcha</a>
+			<!-- 
+			<input type="image" src="../static/images/refresh.gif" name="imgCaptcha" th:src="@{/images/refresh.gif}"  width="48" height="48" onclick="location.href='${captchaUrl}'" /> 
+			 -->
+			<input type="text" name="catpchaText" />
+		</div>
+		<div>
+			<input type="submit" name="submitForm" value="Sign In" />
+			<a th:href="@{/register}">Register</a>
+		</div>
+	</form>
+</body>
+</html>

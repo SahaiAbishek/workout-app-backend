@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="#" th:action="@{/user}" th:object="${user}" method="post">
+		<table>
+			<tr>
+				<td>Name : <input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<td>email : <input type="text" name="email"></td>
+			</tr>
+			<tr>
+				<td>Username : <input type="text" name="userName"></td>
+			</tr>
+			<tr>
+				<td>Password : <input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<td>confirm Password : <input type="password" name="confirmPassword"></td>
+			</tr>
+			<tr>
+				<td>
+					<label th:text="${captcha}"> </label>
+					<a th:href="@{/register/captcha}">Captcha</a> 
+					<input type="text" name="catpchaText" />
+				</td>
+			</tr>
+			<tr>
+				<td><input type="reset" name="reset" value="reset"></td>
+				<td><input type="submit" name="register" value="register"></td>
+				
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
